@@ -1,0 +1,620 @@
+/* ================= THEME VARIABLES ================= */
+:root {
+  --bg: #0f1115;
+  --bg-secondary: #0b0e13;
+  --text: #e5e7eb;
+  --border: #1f2933;
+  --primary: #2563eb;
+  --hover: #2a3441;
+  --muted: #9ca3af;
+  --cell-today-border: #374151;
+  --completed: #22c55e;
+}
+
+.light {
+  --bg: #f8f9fa;
+  --bg-secondary: #ffffff;
+  --text: #1f2937;
+  --border: #d1d5db;
+  --primary: #2563eb;
+  --hover: #1d4ed8;
+  --muted: #6b7280;
+  --cell-today-border: #9ca3af;
+  --completed: #22c55e;
+}
+
+/* ================= ROOT ================= */
+.dashboard-container {
+  min-height: 100vh;
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dashboard-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.dashboard-actions button {
+  background: var(--border);
+  border: none;
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.dashboard-actions button:hover {
+  background: var(--hover);
+}
+
+/* ================= NAV ================= */
+.dashboard-nav {
+  display: flex;
+  gap: 10px;
+  padding: 14px 28px;
+  flex-wrap: wrap;
+}
+
+.dashboard-nav button {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.dashboard-nav button:hover {
+  color: var(--text);
+  border-color: var(--hover);
+}
+
+/* ================= LAYOUT ================= */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 20px;
+}
+
+.sidebar {
+  padding: 20px;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-btn {
+  width: 100%;
+  background: var(--primary);
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.main-content {
+  padding: 24px;
+  overflow-x: auto;
+}
+
+/* ================= BANNERS ================= */
+.today-banner,
+.streak-banner {
+  background: var(--bg-secondary);
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  border: 1px solid var(--border);
+}
+
+/* ================= CALENDAR GRID ================= */
+.calendar-grid {
+  background: var(--bg-secondary);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.calendar-row {
+  display: grid;
+  grid-template-columns: 220px repeat(7, 1fr) 60px;
+  align-items: center;
+  gap: 4px;
+}
+
+.calendar-row.header {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.calendar-cell {
+  text-align: center;
+  padding: 8px 4px;
+  min-width: 32px;
+}
+
+/* ================= TASK COLUMN ================= */
+.task-header {
+  text-align: left;
+}
+
+.task-name {
+  text-align: left;
+  padding-right: 10px;
+}
+
+.task-name span {
+  font-weight: 500;
+}
+
+.task-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+/* ================= PROGRESS BAR ================= */
+.task-progress {
+  height: 6px;
+  background: var(--border);
+  border-radius: 999px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--completed), #4ade80);
+}
+
+/* ================= CHECKBOX CELLS ================= */
+.calendar-cell.today-cell {
+  cursor: pointer;
+}
+
+.calendar-cell.disabled-cell {
+  opacity: 0.25;
+}
+
+.calendar-cell.today-cell::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid var(--cell-today-border);
+}
+
+.calendar-cell.completed::after {
+  background: var(--completed);
+  border-color: var(--completed);
+}
+
+/* ================= ANALYTICS ================= */
+.analytics-section {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.line-chart {
+  width: 100%;
+  height: 160px;
+  margin-top: 20px;
+}
+
+.line-chart-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ================= MODALS ================= */
+.edit-modal,
+.confirm-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.edit-modal-content,
+.confirm-modal-content {
+  background: var(--bg-secondary);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  width: 90%;
+  max-width: 360px;
+  color: var(--text);
+}
+
+.edit-modal-content input {
+  width: 100%;
+  padding: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* ================= FLOATING BUTTON ================= */
+.floating-add-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary);
+  border: none;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 22px;
+  z-index: 1000;
+}
+
+/* ================= CIRCULAR COMPLETION RINGS ================= */
+.completion-ring-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  width: 140px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.completion-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--completed) calc(var(--percent) * 1%),
+    var(--bg-secondary) 0
+  );
+  display: grid;
+  place-items: center;
+  margin: 0 auto 10px;
+  position: relative;
+}
+
+.completion-ring::before {
+  content: "";
+  width: 78px;
+  height: 78px;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.completion-ring span {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .dashboard-layout {
+    grid-template-columns: 180px 1fr;
+  }
+  .calendar-row {
+    grid-template-columns: 160px repeat(7, 1fr) 50px;
+  }
+  .completion-ring-card {
+    width: 120px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    display: flex;
+    justify-content: space-between;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+  .calendar-row {
+    grid-template-columns: 140px repeat(7, 1fr) 50px;
+  }
+  .dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-row {
+    grid-template-columns: 120px repeat(7, 1fr) 40px;
+  }
+  .calendar-cell {
+    padding: 6px 2px;
+    font-size: 10px;
+  }
+  .completion-ring {
+    width: 28px;
+    height: 28px;
+  }
+  .completion-ring::before {
+    width: 20px;
+    height: 20px;
+  }
+  .completion-ring span {
+    font-size: 8px;
+  }
+  .dashboard-nav {
+    padding: 10px 14px;
+  }
+  .dashboard-header h2 {
+    font-size: 18px;
+  }
+}
+
+/* ================= MODAL BUTTONS ================= */
+.confirm-modal-actions button,
+.edit-modal-actions button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.confirm-modal-actions button:first-child {
+  background: #ef4444;
+  color: #fff;
+}
+
+.confirm-modal-actions button:first-child:hover {
+  background: #dc2626;
+}
+
+.confirm-modal-actions button:last-child {
+  background: var(--border);
+  color: var(--text);
+}
+
+.confirm-modal-actions button:last-child:hover {
+  background: var(--hover);
+}
+
+.edit-modal-actions button:first-child {
+  background: var(--primary);
+  color: #fff;
+}
+
+.edit-modal-actions button:first-child:hover {
+  background: var(--hover);
+}
+
+.edit-modal-actions button:last-child {
+  background: var(--border);
+  color: var(--text);
+}
+
+.edit-modal-actions button:last-child:hover {
+  background: var(--hover);
+}
+
+/* ================= MODAL ANIMATIONS ================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================= YEAR CALENDAR MODAL ================= */
+.year-calendar-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+  z-index: 1100;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.year-calendar-content {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px 24px;
+  max-width: 1000px;
+  width: 90%;
+  text-align: center;
+  color: var(--text);
+  animation: slideIn 0.2s ease-in-out;
+}
+
+.year-calendar-content h3 {
+  margin-bottom: 16px;
+}
+
+.year-calendar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.month-grid {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px;
+  width: 140px;
+}
+
+.month-grid h4 {
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-cell {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  background: var(--bg-secondary);
+  color: var(--text);
+  transition: all 0.2s;
+}
+
+.day-cell.has-entry {
+  background: #22c55e;
+  color: #0b0e13;
+  font-weight: 600;
+}
+
+.day-cell.selected {
+  border: 2px solid #2563eb;
+}
+
+.day-cell.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.selected-week-report {
+  margin-top: 20px;
+  text-align: left;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.selected-week-report h4 {
+  margin-bottom: 10px;
+}
+
+.selected-week-report div {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+/* ================= YEAR CALENDAR MODAL CLOSE BUTTON ================= */
+.year-calendar-content > button {
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: #374151;
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.year-calendar-content > button:hover {
+  background: #4b5563;
+}
+
+/* ================= ANIMATION REUSE ================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .month-grid {
+    width: 100px;
+    padding: 8px;
+  }
+
+  .day-cell {
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .month-grid {
+    width: 90px;
+    padding: 6px;
+  }
+
+  .day-cell {
+    width: 12px;
+    height: 12px;
+    font-size: 9px;
+  }
+}
+
+.selected-day-report {
+  margin-top: 20px;
+  text-align: left;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.selected-day-report h4 {
+  margin-bottom: 10px;
+}
+
+.selected-day-report div {
+  font-size: 13px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--bg);
+}
+
+.selected-day-report div.completed {
+  background: #22c55e;
+  color: #0b0e13;
+  font-weight: 600;
+}

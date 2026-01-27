@@ -1,0 +1,45 @@
+.entry-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.entry-input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.entry-button {
+  padding: 10px 18px;
+  background-color: #10b981;
+  color: white;
+  border-radius: 6px;
+  border: none;
+}
+
+.entry-button:hover {
+  background-color: #059669;
+}
+
+.entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.entry-card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.entry-title {
+  margin-bottom: 5px;
+}
+
+.entry-description {
+  color: #555;
+}
