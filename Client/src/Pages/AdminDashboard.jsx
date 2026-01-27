@@ -22,7 +22,6 @@ export default function AdminDashboard() {
   const token = localStorage.getItem("authToken");
   const loggedInUser = JSON.parse(localStorage.getItem("user"));
 
-  /* ================= STATE ================= */
   const [users, setUsers] = useState([]);
   const [logs, setLogs] = useState([]);
   const [selectedUser, setSelectedUser] = useState(null);
@@ -40,16 +39,13 @@ export default function AdminDashboard() {
   const [analytics, setAnalytics] = useState({ roles: [], registrations: [] });
   const [showAllLogs, setShowAllLogs] = useState(false);
 
-  /* ================= STATE: Weekly Progress ================= */
   const [userWeeklyProgress, setUserWeeklyProgress] = useState([]);
 
-  /* ================= AUTH ================= */
   const handleLogout = () => {
     localStorage.clear();
     navigate("/login");
   };
 
-  /* ================= LOAD USERS & LOGS ================= */
   const loadUsers = async () => {
     try {
       const res = await axios.get("http://localhost:5000/api/admin/users", {
@@ -76,7 +72,6 @@ export default function AdminDashboard() {
         registrations,
       });
 
-      /* ================= Weekly Progress ================= */
       const progressRes = await Promise.all(
         allUsers.map(async (u) => {
           try {
