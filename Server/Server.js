@@ -14,17 +14,17 @@ dotenv.config();
 
 const app = express();
 
-/* ===================== CORS CONFIG ===================== */
 const allowedOrigins = [
-  "http://localhost:5173", // Vite local
-  "http://localhost:3000", // optional React
-  process.env.FRONTEND_URL, // Vercel frontend
-].filter(Boolean); // remove undefined
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://daily-tracker-lwcr.vercel.app",
+  process.env.FRONTEND_URL,
+].filter(Boolean);
 
 app.use(
   cors({
     origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // allow Postman / server-to-server
+      if (!origin) return callback(null, true);
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
