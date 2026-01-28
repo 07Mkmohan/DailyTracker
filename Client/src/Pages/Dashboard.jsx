@@ -215,9 +215,8 @@ export default function Dashboard() {
           >
             ➕ Add Entry
           </button>
-          {showForm && <EntryForm onAdded={loadEntries} />}
         </div>
-
+        {showForm && <EntryForm onAdded={loadEntries} />}
         <div className="main-content">
           {activeSection === SECTIONS.DASHBOARD && (
             <>
