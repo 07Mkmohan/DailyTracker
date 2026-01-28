@@ -215,6 +215,7 @@ export default function Dashboard() {
           >
             ➕ Add Entry
           </button>
+          {showForm && <EntryForm onAdded={loadEntries} />}
         </div>
 
         <div className="main-content">
@@ -237,8 +238,6 @@ export default function Dashboard() {
                 </div>
                 <p>Weekly Completion</p>
               </div>
-
-              {showForm && <EntryForm onAdded={loadEntries} />}
 
               <div className="calendar-grid desktop-calendar">
                 <div className="calendar-row header">
