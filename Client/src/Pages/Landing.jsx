@@ -65,7 +65,7 @@ export default function Landing() {
         <h1 className="hero-title">
           Track Your Day.
           <br />
-          Progress isn’t about perfection — it’s about showing up. 🚀
+          Progress isn’t about perfection <br /> — it’s about showing up. 🚀
         </h1>
         <p className="hero-subtitle">
           Build habits, track progress, and stay consistent — all in one
