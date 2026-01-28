@@ -505,7 +505,7 @@ export default function Dashboard() {
         className="floating-add-btn"
         onClick={() => setShowForm(!showForm)}
       >
-        ➕
+        +
       </button>
     </div>
   );

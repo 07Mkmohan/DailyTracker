@@ -701,3 +701,55 @@
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
+
+.year-calendar-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.year-calendar-content {
+  background: white;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 12px;
+  padding: 16px;
+}
+@media (max-width: 768px) {
+  .year-calendar-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.day-cell {
+  min-width: 32px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .day-cell {
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 14px;
+  }
+}
+.month-grid {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.month-grid h4 {
+  text-align: center;
+  margin-bottom: 8px;
+}
