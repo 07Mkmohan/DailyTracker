@@ -23,6 +23,13 @@ const userSchema = new mongoose.Schema(
       enum: ["user", "admin"],
       default: "user",
     },
+    reminderTime: {
+      type: String, // "08:00"
+    },
+    reminderEnabled: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true },
 );

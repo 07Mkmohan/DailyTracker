@@ -43,7 +43,7 @@ export default function AdminDashboard() {
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/login");
+    navigate("/");
   };
 
   const loadUsers = async () => {

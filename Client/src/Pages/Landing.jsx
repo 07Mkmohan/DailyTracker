@@ -97,14 +97,6 @@ export default function Landing() {
         <p className="motivation-line highlight">
           “Roz likho, roz sudhro — Success mangne se nhi mehanat se milti hai.”
         </p>
-
-        <p className="motivation-line">
-          “Perfect hone ka intezaar mat karo, shuru karna hi perfect hai.”
-        </p>
-
-        <p className="motivation-line highlight">
-          “The mountain does not need to declare it's height: the valley knows.”
-        </p>
       </motion.section>
 
       {/* FEATURES */}
@@ -124,7 +116,21 @@ export default function Landing() {
           </motion.div>
         ))}
       </section>
+      <motion.section
+        className="motivation"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <p className="motivation-line">
+          “Perfect hone ka intezaar mat karo, shuru karna hi perfect hai.”
+        </p>
 
+        <p className="motivation-line highlight">
+          “The mountain does not need to declare it's height: the valley knows.”
+        </p>
+      </motion.section>
       {/* CTA */}
       <motion.section
         className="cta"
