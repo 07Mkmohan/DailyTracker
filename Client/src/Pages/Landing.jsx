@@ -1,56 +1,146 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import "../styles/landing.css";
 
+const features = [
+  {
+    icon: "📝",
+    title: "Daily Logs",
+    desc: "Log your tasks and thoughts daily.",
+  },
+  {
+    icon: "📅",
+    title: "Calendar View",
+    desc: "Track progress across the full year.",
+  },
+  {
+    icon: "📊",
+    title: "Weekly Reports",
+    desc: "Visual weekly productivity insights.",
+  },
+  { icon: "🔥", title: "Streaks", desc: "Stay motivated with habit streaks." },
+  {
+    icon: "🎯",
+    title: "Goal Tracking",
+    desc: "Set goals and monitor progress.",
+  },
+  { icon: "🔔", title: "Reminders", desc: "Never miss a task again." },
+  { icon: "🌙", title: "Dark Mode", desc: "Beautiful dark & light themes." },
+  { icon: "🔐", title: "Secure", desc: "JWT based authentication." },
+  {
+    icon: "⚡",
+    title: "Fast & Simple",
+    desc: "Optimized for speed and focus.",
+  },
+];
+
 export default function Landing() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="landing">
+      {/* NAVBAR */}
       <nav className="landing-nav">
         <h2 className="logo">DailyTracker</h2>
-        <div className="nav-links">
+
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
           <Link to="/register" className="nav-link nav-btn">
             Get Started
           </Link>
         </div>
+
+        <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </div>
       </nav>
 
-      <section className="hero">
+      {/* HERO */}
+      <motion.section
+        className="hero"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <h1 className="hero-title">
-          Track Your Day. AAJ karega Thabhi aage Badega
+          Track Your Day.
+          <br />
+          Aaj karega tabhi aage badhega 🚀
         </h1>
         <p className="hero-subtitle">
-          A simple daily tracker to log your tasks, thoughts, and progress — all
-          in one place.
+          Build habits, track progress, and stay consistent — all in one
+          powerful daily tracker.
         </p>
 
         <div className="hero-actions">
           <Link to="/register" className="primary-btn">
             Start Tracking
           </Link>
-          <Link to="/" className="secondary-btn">
+          <Link to="/login" className="secondary-btn">
             Login
           </Link>
         </div>
-      </section>
+      </motion.section>
 
+      {/* MOTIVATION */}
+      <motion.section
+        className="motivation"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <p className="motivation-line">
+          “Aaj ka ek chhota kadam, kal ki badi jeet ban jata hai.”
+        </p>
+
+        <p className="motivation-line highlight">
+          “Roz likho, roz sudhro — Success mangne se nhi mehanat se milti hai.”
+        </p>
+
+        <p className="motivation-line">
+          “Perfect hone ka intezaar mat karo, shuru karna hi perfect hai.”
+        </p>
+
+        <p className="motivation-line highlight">
+          “The mountain does not need to declare it's height: the valley knows.”
+        </p>
+      </motion.section>
+
+      {/* FEATURES */}
       <section className="features">
-        <div className="feature-card">
-          <h3>📝 Daily Logs</h3>
-          <p>Write and save your daily activities with ease.</p>
-        </div>
-
-        <div className="feature-card">
-          <h3>📊 Stay Organized</h3>
-          <p>View all your entries in one clean dashboard.</p>
-        </div>
-
-        <div className="feature-card">
-          <h3>🔒 Secure</h3>
-          <p>Your data is private and linked only to your account.</p>
-        </div>
+        {features.map((f, i) => (
+          <motion.div
+            className="feature-card"
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.08 }}
+            viewport={{ once: true }}
+          >
+            <div className="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+          </motion.div>
+        ))}
       </section>
 
+      {/* CTA */}
+      <motion.section
+        className="cta"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        <h2>Start Building Better Days Today</h2>
+        <Link to="/register" className="cta-btn">
+          Create Free Account
+        </Link>
+      </motion.section>
+
+      {/* FOOTER */}
       <footer className="landing-footer">
-        <p>© {new Date().getFullYear()} DailyTracker ( MK )</p>
+        © {new Date().getFullYear()} DailyTracker • Built with ❤️ by MK
       </footer>
     </div>
   );

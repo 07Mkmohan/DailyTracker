@@ -53,7 +53,7 @@ export default function Dashboard() {
   /* ---------------- AUTH ---------------- */
   const logout = () => {
     localStorage.clear();
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   /* ---------------- TASK HELPERS ---------------- */
