@@ -221,7 +221,7 @@ export default function Dashboard() {
           {activeSection === SECTIONS.DASHBOARD && (
             <>
               <div className="today-banner">
-                <span>📅 Today</span>
+                <span>📅 Today : </span>
                 <strong>{formatToday()}</strong>
               </div>
               <div className="streak-banner">
@@ -240,7 +240,7 @@ export default function Dashboard() {
 
               {showForm && <EntryForm onAdded={loadEntries} />}
 
-              <div className="calendar-grid">
+              <div className="calendar-grid desktop-calendar">
                 <div className="calendar-row header">
                   <div className="calendar-cell task-header">Task</div>
                   {days.map((d) => (
@@ -302,6 +302,34 @@ export default function Dashboard() {
                         {isCompleted(task, idx) ? "✔" : ""}
                       </div>
                     ))}
+                  </div>
+                ))}
+              </div>
+              <div className="mobile-calendar">
+                {tasks.map((task) => (
+                  <div key={task} className="task-card">
+                    <div className="task-card-header">
+                      <span>{task}</span>
+                      <span className="task-progress-text">
+                        {getTaskProgress(task)}%
+                      </span>
+                    </div>
+
+                    <div className="task-card-days">
+                      {days.map((d, idx) => (
+                        <div
+                          key={idx}
+                          className={`day-pill ${
+                            idx === todayIndex ? "today" : ""
+                          } ${isCompleted(task, idx) ? "completed" : ""}`}
+                          onClick={() =>
+                            idx === todayIndex && toggleCompletion(task)
+                          }
+                        >
+                          {d[0]}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>

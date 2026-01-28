@@ -618,3 +618,67 @@
   color: #0b0e13;
   font-weight: 600;
 }
+
+
+/* ================= MOBILE CALENDAR ================= */
+.mobile-calendar {
+  display: none;
+  gap: 12px;
+}
+
+.task-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.task-card-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.task-progress-text {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.task-card-days {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day-pill {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--border);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.day-pill.today {
+  border-color: var(--primary);
+}
+
+.day-pill.completed {
+  background: var(--completed);
+  border-color: var(--completed);
+  color: #0b0e13;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .desktop-calendar {
+    display: none;
+  }
+
+  .mobile-calendar {
+    display: flex;
+    flex-direction: column;
+  }
+}
