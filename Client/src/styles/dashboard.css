@@ -436,89 +436,102 @@
 }
 
 /* ================= YEAR CALENDAR MODAL ================= */
+
+
+/* ================= YEAR CALENDAR ================= */
+
 .year-calendar-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 40px;
-  z-index: 1100;
-  overflow-y: auto;
-  animation: fadeIn 0.2s ease-in-out;
+  align-items: center;
+  padding: 12px;
+  z-index: 2000;
 }
 
 .year-calendar-content {
   background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 20px 24px;
-  max-width: 1000px;
-  width: 90%;
-  text-align: center;
   color: var(--text);
-  animation: slideIn 0.2s ease-in-out;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 14px;
+  padding: 20px;
 }
 
-.year-calendar-content h3 {
-  margin-bottom: 16px;
-}
-
+/* GRID OF MONTHS */
 .year-calendar-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
-  justify-content: center;
 }
 
+/* SINGLE MONTH */
 .month-grid {
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 10px;
-  width: 170px;
+  border-radius: 12px;
+  padding: 12px;
 }
 
 .month-grid h4 {
-  margin-bottom: 6px;
+  text-align: center;
+  margin-bottom: 8px;
   font-size: 14px;
-  font-weight: 600;
 }
 
+/* DAYS GRID */
 .days-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 6px;
 }
 
+/* DAY CELL */
 .day-cell {
-  width: 18px;
-  height: 18px;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  cursor: pointer;
-  border-radius: 4px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 6px;
   background: var(--bg-secondary);
-  color: var(--text);
-  transition: all 0.2s;
+  cursor: pointer;
+  user-select: none;
 }
 
+/* EMPTY CELLS */
+.day-cell.empty {
+  background: transparent;
+  cursor: default;
+}
+
+/* HAS ENTRY */
 .day-cell.has-entry {
   background: #22c55e;
   color: #0b0e13;
   font-weight: 600;
 }
 
+/* SELECTED */
 .day-cell.selected {
-  border: 2px solid #2563eb;
+  outline: 2px solid var(--primary);
 }
 
-.day-cell.empty {
-  background: transparent;
-  cursor: default;
+/* MOBILE */
+@media (max-width: 768px) {
+  .year-calendar-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .day-cell {
+    font-size: 14px;
+  }
 }
+
 
 .selected-week-report {
   margin-top: 20px;
