@@ -28,7 +28,7 @@ app.use(
       if (allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
-      return callback(new Error("Not allowed by CORS"));
+      return callback(null, false);
     },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -38,6 +38,17 @@ app.use(
 
 /* ===================== MIDDLEWARE ===================== */
 app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "OK",
+    message: "Daily Tracker API is running 🚀",
+  });
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).send("healthy");
+});
 
 /* ===================== ROUTES ===================== */
 app.use("/api/users", userRoutes);
