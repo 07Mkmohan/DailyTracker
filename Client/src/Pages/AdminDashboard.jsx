@@ -48,9 +48,12 @@ export default function AdminDashboard() {
 
   const loadUsers = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/users", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        "https://dailytracker-p93j.onrender.com/api/admin/users",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       const allUsers = res.data;
       setUsers(allUsers);
 
@@ -75,7 +78,7 @@ export default function AdminDashboard() {
         allUsers.map(async (u) => {
           try {
             const entriesRes = await axios.get(
-              `http://localhost:5000/api/admin/users/entries/${u._id}`,
+              `https://dailytracker-p93j.onrender.com/api/admin/users/entries/${u._id}`,
               { headers: { Authorization: `Bearer ${token}` } },
             );
             const entries = entriesRes.data || [];
@@ -130,9 +133,12 @@ export default function AdminDashboard() {
 
   const loadLogs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/logs", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+        "https://dailytracker-p93j.onrender.com/api/admin/logs",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       setLogs(res.data || []);
     } catch {
       setLogs([]);
@@ -151,7 +157,7 @@ export default function AdminDashboard() {
   const updateUser = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/users/${selectedUser._id}`,
+        `https://dailytracker-p93j.onrender.com/api/admin/users/${selectedUser._id}`,
         editData,
         { headers: { Authorization: `Bearer ${token}` } },
       );
@@ -167,9 +173,12 @@ export default function AdminDashboard() {
   const deleteUser = async (id) => {
     if (!window.confirm("Delete this user?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/admin/users/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.delete(
+        `https://dailytracker-p93j.onrender.com/api/admin/users/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
       toast.success("User deleted");
       loadUsers();
       loadLogs();
