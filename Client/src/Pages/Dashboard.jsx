@@ -211,16 +211,10 @@ export default function Dashboard() {
         <div className="sidebar">
           <button
             className="sidebar-btn"
-            onClick={() => setShowForm((prev) => !prev)}
+            onClick={() => setShowForm(!showForm)}
           >
             ➕ Add Entry
           </button>
-
-          {showForm && (
-            <div className="inline-entry-form">
-              <EntryForm onAdded={loadEntries} />
-            </div>
-          )}
         </div>
 
         <div className="main-content">
