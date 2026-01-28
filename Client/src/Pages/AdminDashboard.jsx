@@ -54,7 +54,6 @@ export default function AdminDashboard() {
       const allUsers = res.data;
       setUsers(allUsers);
 
-      // Analytics
       const rolesCount = allUsers.reduce(
         (acc, u) => {
           if (u.role === "admin") acc.admin++;

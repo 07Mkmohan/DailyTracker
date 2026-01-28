@@ -182,10 +182,8 @@ export default function Dashboard() {
     return max ? Math.round((total / max) * 100) : 0;
   }, [weeklyStats, tasks.length]);
 
-  /* ==================== RENDER ==================== */
   return (
     <div className={`dashboard-container ${dark ? "dark" : "light"}`}>
-      {/* HEADER */}
       <div className="dashboard-header">
         <h2>Daily Tracker</h2>
         <div className="dashboard-actions">
