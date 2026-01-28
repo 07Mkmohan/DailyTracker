@@ -754,23 +754,10 @@
   margin-bottom: 8px;
 }
 
-.inline-entry-form {
-  margin-top: 12px;
-  padding: 12px;
-  border-radius: 10px;
-  background: var(--card-bg, #f9fafb);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-/* Mobile friendly */
-@media (max-width: 768px) {
-  .inline-entry-form {
-    padding: 10px;
-  }
-}
 
 .entry-form input,
-.entry-form textarea,
-.entry-form button {
+.entry-form textarea {
   width: 100%;
+  font-size: 16px; /* prevents mobile zoom */
+  padding: 12px;
 }
