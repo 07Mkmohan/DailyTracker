@@ -682,3 +682,22 @@
     flex-direction: column;
   }
 }
+
+.day-pill,
+.calendar-cell,
+.task-card {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.day-pill {
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.day-pill {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
